@@ -1,126 +1,88 @@
-# 长篇剧集创作 SOP Skill
+# series-storytelling-skill
 
-把“一个点子”扩展成“可持续推进的一整季故事”，核心不是把剧情越写越大，而是把多个可独立成立的短篇单元，组织成彼此咬合、彼此放大的多线叙事。
+这是一个面向 OpenClaw / ClawHub 的长篇剧集创作技能仓库。它把“单集故事 -> 多线长篇 -> 季终闭环与续季钩子”的创作方法，整理成可安装、可分发的 skill bundle。
 
-这个仓库将基于公开视频里提炼出的《豺狼的故事》创作方法，整理为一个可复用的 Codex Skill，帮助创作者系统化完成：
-
-- 单集故事的起承转合搭建
-- 多线剧情的交叉与互相推动
-- 季终闭环、续季钩子与人物弧光设计
-
-## 核心价值
-
-- 用“短篇故事组合”的方式拆解长篇创作，降低空转和失控感。
-- 提供模板化的单集 SOP 与全季大纲骨架，方便直接填空开写。
-- 强调“线与线的交点”而不只是“线的数量”，让剧情真正产生复利。
-- 用案例示范“小冲突如何堆叠成大叙事”，适合悬疑、犯罪、爱情、成长等类型延展。
+真正可安装的技能内容位于 `series-storytelling-skill/`。
 
 ## 仓库结构
 
 ```text
 .
-├── SKILL.md
-├── agents/
-│   └── openai.yaml
-├── docs/
-│   └── advanced.md
-├── examples/
-│   └── wolf-story/
-│       ├── README.md
-│       ├── episode-breakdown.md
-│       └── season-map.md
-├── images/
-│   └── .gitkeep
-├── templates/
-│   ├── episode-sop.md
-│   └── series-outline.md
+├── series-storytelling-skill/
+│   ├── SKILL.md
+│   ├── LICENSE
+│   ├── examples/
+│   ├── images/
+│   ├── references/
+│   └── templates/
+├── install-openclaw-skill.sh
 ├── .gitignore
 └── LICENSE
 ```
 
-## 创作流程
+## 安装到 OpenClaw
 
-### 1. 单集故事的“短篇逻辑”搭建
+### 方式 1：从 ClawHub 安装
 
-长篇剧集先要会写单集。每一集都应具备一个小型短篇的完整感，至少包含：
+发布完成后可直接使用：
 
-- 激励事件：这一集为什么开始。
-- 故事脊椎：主角这一集最想完成什么。
-- 危机：阻碍目标达成的关键冲突。
-- 进展纠葛：从起点到危机之间不断升级的行动与阻碍。
-- 高潮与结局：本集冲突的爆发与收束。
-
-直接使用 [templates/episode-sop.md](templates/episode-sop.md) 填写，会比从空白文档开始更快进入状态。
-
-### 2. 多线交织的“长篇逻辑”扩展
-
-长篇不是把单线拉长，而是把多条故事线编成一张会相互施压的网。常见配置如下：
-
-- 主线：全剧最核心的目标与冲突。
-- 对抗线：与主线形成外部阻力的追击、调查或竞争力量。
-- 情感/成长线：角色关系、家庭秘密、身份裂缝、内在矛盾。
-- 工具人线：负责制造误差、延误、漏洞、偶然性和新麻烦的辅助线。
-
-关键不在于线多，而在于交点明确：
-
-- 一条线的危机，是否会变成另一条线的机会？
-- 一条线的推进，是否会打断另一条线的节奏？
-- 多条线能否在同一场戏或同一集高潮发生碰撞？
-
-全季结构可直接套用 [templates/series-outline.md](templates/series-outline.md)。
-
-### 3. 季间衔接与人物弧光
-
-长篇剧集要同时完成两件事：
-
-- 单季闭环：本季主冲突要有明确阶段性解决。
-- 续季钩子：结局处必须留下新的结构性问题，而不是单纯留白。
-
-角色弧光则建议沿着“危机 -> 选择 -> 后果 -> 新立场”的路径推进。人物不是靠台词成长，而是靠代价成长。
-
-## 示例与模板
-
-### 示例：《豺狼的故事》结构化拆解
-
-- 目录：[examples/wolf-story/](examples/wolf-story/)
-- 内容：从“杀手线、警察线、家庭线、工具人线”四条线出发，演示如何从单集推进到整季张力。
-- 说明：示例为结构学习用途，不是对原视频或任何现有作品的逐字复刻。
-
-### 模板复用
-
-- [templates/episode-sop.md](templates/episode-sop.md)：单集 SOP，适合先写出一集的完整冲突闭环。
-- [templates/series-outline.md](templates/series-outline.md)：全季骨架，适合构建多线并行、交点设计和季终钩子。
-- [docs/advanced.md](docs/advanced.md)：进阶章节，覆盖类型节奏适配、多季世界观和观众情绪管理。
-
-## 作为 Codex Skill 使用
-
-1. 将本仓库放入你的技能目录，例如：`~/.codex/skills/series-storytelling-skill/`
-2. 在对话中直接调用：`$series-storytelling-skill`
-3. 给出以下任一输入即可开始：
-   - 一个故事 premise
-   - 一段视频笔记
-   - 一个角色关系草图
-   - 一个单集梗概，希望扩展成 8 集或 12 集季纲
-
-推荐提示词：
-
-```text
-使用 $series-storytelling-skill，把下面这个单集犯罪故事扩展成 8 集网剧，输出主线、副线、每集核心冲突、季终钩子和人物弧光。
+```bash
+openclaw skills install series-storytelling-skill
 ```
 
-## 适用场景
+OpenClaw 会把技能安装到当前 workspace 的 `skills/` 目录中。根据官方文档，`openclaw skills install <slug>` 是从 ClawHub 安装技能的原生方式。来源：[Skills](https://docs.openclaw.ai/tools/skills)、[ClawHub](https://docs.openclaw.ai/tools/clawhub)
 
-- 网剧、电视剧、长篇短剧、限定剧
-- 悬疑、犯罪、爱情、成长、家庭、职场等多线叙事
-- 编剧前期开发、编剧室共创、课程教学、内容 IP 孵化
+### 方式 2：从 GitHub 手动安装
 
-## 如何贡献
+```bash
+git clone https://github.com/hshgogogo/hua.git
+cd hua
+./install-openclaw-skill.sh
+```
 
-- 提交新的案例拆解，补充不同题材的结构样本。
-- 完善模板，让它更适合你擅长的剧种。
-- 在 Issue 或 PR 中讨论“多线交点设计”“季终钩子强度”“角色弧光密度”等具体问题。
+默认会把技能复制到 `~/.openclaw/skills/series-storytelling-skill`。如果你想装到某个具体 workspace，也可以把 `skills/` 目录作为参数传给脚本：
 
-## 参考来源
+```bash
+./install-openclaw-skill.sh /path/to/workspace/skills
+```
 
-- 灵感整理自公开视频中围绕《豺狼的故事》的剧本分析方法，并进行了结构化归纳与二次整理。
+或者手动复制：
+
+```bash
+mkdir -p /path/to/workspace/skills
+cp -R series-storytelling-skill /path/to/workspace/skills/
+```
+
+官方文档说明，OpenClaw 会从 `<workspace>/skills` 和 `~/.openclaw/skills` 加载技能。来源：[Skills](https://docs.openclaw.ai/tools/skills)、[FAQ](https://docs.openclaw.ai/help/faq)
+
+## 使用方式
+
+安装后，在 OpenClaw 里直接调用这个 skill，或在对话中给出类似请求：
+
+- 把一个单集犯罪故事扩展成 8 集网剧
+- 基于人物关系草图生成一季大纲
+- 根据视频笔记整理主线、副线、季终钩子和角色弧光
+
+## 核心内容
+
+- 单集 SOP 模板：`series-storytelling-skill/templates/episode-sop.md`
+- 全季大纲模板：`series-storytelling-skill/templates/series-outline.md`
+- 进阶参考：`series-storytelling-skill/references/advanced.md`
+- 结构案例：`series-storytelling-skill/examples/wolf-story/`
+
+## 发布说明
+
+这个仓库按单技能仓库整理，`series-storytelling-skill/` 可直接作为 ClawHub 的发布路径：
+
+```bash
+clawhub skill publish ./series-storytelling-skill \
+  --slug series-storytelling-skill \
+  --name "Series Storytelling Skill" \
+  --version 1.0.0 \
+  --tags latest,writing,storytelling,screenwriting
+```
+
+## 说明
+
 - 本仓库聚焦创作方法论和模板工具，不包含对任何原始剧本或视频内容的逐字转载。
+- 发布到 ClawHub 需要单独安装并登录 `clawhub` CLI。官方命令见：[ClawHub](https://docs.openclaw.ai/tools/clawhub)

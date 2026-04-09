@@ -1,6 +1,9 @@
 ---
 name: series-storytelling-skill
-description: "Use this skill when the user wants to turn a premise, a one-episode story, video notes, or fragmentary ideas into a long-form web series or TV season. It is especially useful for Chinese-language story development involving multi-line plotting, episode beat design, season arcs, cliffhangers, character growth, and transforming short-story units into a serialized structure."
+description: Turn a premise, video notes, or a one-episode idea into a multi-line long-form series or season outline
+homepage: https://github.com/hshgogogo/hua
+user-invocable: true
+metadata: {"openclaw":{"emoji":"🎬","homepage":"https://github.com/hshgogogo/hua","always":true}}
 ---
 
 # 长篇剧集创作
@@ -39,7 +42,7 @@ description: "Use this skill when the user wants to turn a premise, a one-episod
 - 进展纠葛
 - 高潮与结局
 
-优先使用 [templates/episode-sop.md](templates/episode-sop.md)。
+优先使用 `{baseDir}/templates/episode-sop.md`。
 
 ### 2. 为每条故事线都建立自己的推进逻辑
 
@@ -100,10 +103,10 @@ description: "Use this skill when the user wants to turn a premise, a one-episod
 
 ## 推荐资源
 
-- 单集模板：[templates/episode-sop.md](templates/episode-sop.md)
-- 全季模板：[templates/series-outline.md](templates/series-outline.md)
-- 进阶参考：[docs/advanced.md](docs/advanced.md)
-- 案例拆解：[examples/wolf-story/README.md](examples/wolf-story/README.md)
+- 单集模板：`{baseDir}/templates/episode-sop.md`
+- 全季模板：`{baseDir}/templates/series-outline.md`
+- 进阶参考：`{baseDir}/references/advanced.md`
+- 案例拆解：`{baseDir}/examples/wolf-story/README.md`
 
 ## 质量检查
 

@@ -1,7 +1,0 @@
-interface:
-  display_name: "长篇剧集创作 SOP"
-  short_description: "把单集创意扩展成多线长篇剧集的故事技能"
-  default_prompt: "Use $series-storytelling-skill to turn my premise or notes into a season arc, multi-line outline, episode beats, and a strong season hook."
-
-policy:
-  allow_implicit_invocation: true

@@ -71,7 +71,6 @@ cp -R series-storytelling-skill /path/to/workspace/skills/
 - 小说改编
 - 影视化改编
 - 剧本策划
-- 分镜拆剧
 - 从点子到故事大纲
 - 多线叙事
 - 剧集大纲

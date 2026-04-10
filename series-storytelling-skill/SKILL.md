@@ -1,6 +1,6 @@
 ---
 name: series-storytelling-skill
-description: Use this skill to turn a premise, video notes, a one-episode idea, or a long novel into a multi-line long-form series or season outline. Chinese trigger phrases include 长篇小说改故事大纲, 剧本策划, 分镜拆剧, 从点子到故事大纲, 多线叙事, 长剧开发, 小说改编, 影视化改编, 剧集大纲, and 分集策划.
+description: Use this skill to turn a premise, video notes, a one-episode idea, or a long novel into a multi-line long-form series or season outline. Chinese trigger phrases include 长篇小说改故事大纲, 剧本策划, 从点子到故事大纲, 多线叙事, 长剧开发, 小说改编, 影视化改编, 剧集大纲, and 分集策划.
 homepage: https://github.com/hshgogogo/hua
 user-invocable: true
 metadata: {"openclaw":{"emoji":"🎬","homepage":"https://github.com/hshgogogo/hua","always":true}}
@@ -16,7 +16,7 @@ metadata: {"openclaw":{"emoji":"🎬","homepage":"https://github.com/hshgogogo/h
 - 想把长篇小说改造成故事大纲、季纲或剧集大纲
 - 想搭建“主线 + 副线 + 情感线 + 工具人线”的多线结构
 - 想做分集大纲、季纲、人物弧光、季终钩子
-- 想做剧本策划、长剧开发或分镜拆剧
+- 想做剧本策划或长剧开发
 - 手里只有零散灵感、视频笔记、人物关系或一个 premise，需要整理成可执行的大纲
 - 想从一个点子直接展开成故事大纲
 
@@ -30,7 +30,6 @@ metadata: {"openclaw":{"emoji":"🎬","homepage":"https://github.com/hshgogogo/h
 - 小说改编
 - 影视化改编
 - 剧本策划
-- 分镜拆剧
 - 从点子到故事大纲
 - 多线叙事
 - 剧集大纲
@@ -45,7 +44,6 @@ metadata: {"openclaw":{"emoji":"🎬","homepage":"https://github.com/hshgogogo/h
 - 帮我做剧集大纲
 - 帮我做分集策划
 - 把短故事扩成多线长剧
-- 按分镜逻辑拆一部剧
 
 ## 最少输入
 

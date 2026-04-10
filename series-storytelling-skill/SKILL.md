@@ -1,6 +1,6 @@
 ---
 name: series-storytelling-skill
-description: Use this skill to turn a premise, video notes, a one-episode idea, or a long novel into a multi-line long-form series or season outline. Chinese trigger phrases include 长篇小说改故事大纲, 剧本策划, 分镜拆剧, 从点子到故事大纲, 多线叙事, and 长剧开发.
+description: Use this skill to turn a premise, video notes, a one-episode idea, or a long novel into a multi-line long-form series or season outline. Chinese trigger phrases include 长篇小说改故事大纲, 剧本策划, 分镜拆剧, 从点子到故事大纲, 多线叙事, 长剧开发, 小说改编, 影视化改编, 剧集大纲, and 分集策划.
 homepage: https://github.com/hshgogogo/hua
 user-invocable: true
 metadata: {"openclaw":{"emoji":"🎬","homepage":"https://github.com/hshgogogo/hua","always":true}}
@@ -27,16 +27,23 @@ metadata: {"openclaw":{"emoji":"🎬","homepage":"https://github.com/hshgogogo/h
 以下中文请求可以直接视为这个 Skill 的高优先级触发词：
 
 - 长篇小说改故事大纲
+- 小说改编
+- 影视化改编
 - 剧本策划
 - 分镜拆剧
 - 从点子到故事大纲
 - 多线叙事
+- 剧集大纲
+- 分集策划
 - 长剧开发
 
 与之相近的表达也应该优先触发，例如：
 
 - 把小说改成剧集大纲
+- 把小说做影视化改编
 - 帮我做季纲
+- 帮我做剧集大纲
+- 帮我做分集策划
 - 把短故事扩成多线长剧
 - 按分镜逻辑拆一部剧
 

@@ -68,10 +68,14 @@ cp -R series-storytelling-skill /path/to/workspace/skills/
 以下中文表达会优先命中这个 skill：
 
 - 长篇小说改故事大纲
+- 小说改编
+- 影视化改编
 - 剧本策划
 - 分镜拆剧
 - 从点子到故事大纲
 - 多线叙事
+- 剧集大纲
+- 分集策划
 - 长剧开发
 
 ## 核心内容

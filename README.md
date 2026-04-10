@@ -63,6 +63,17 @@ cp -R series-storytelling-skill /path/to/workspace/skills/
 - 基于人物关系草图生成一季大纲
 - 根据视频笔记整理主线、副线、季终钩子和角色弧光
 
+### 常用触发词
+
+以下中文表达会优先命中这个 skill：
+
+- 长篇小说改故事大纲
+- 剧本策划
+- 分镜拆剧
+- 从点子到故事大纲
+- 多线叙事
+- 长剧开发
+
 ## 核心内容
 
 - 单集 SOP 模板：`series-storytelling-skill/templates/episode-sop.md`

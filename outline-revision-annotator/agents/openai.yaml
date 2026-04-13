@@ -1,0 +1,4 @@
+interface:
+  display_name: "Outline Revision Annotator"
+  short_description: "Compare revised PDF outlines and annotate structural changes directly on-page."
+  default_prompt: "Use $outline-revision-annotator to compare a revised PDF outline against an older DOCX outline and mark only structural changes."

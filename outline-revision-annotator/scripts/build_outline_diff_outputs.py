@@ -56,12 +56,14 @@ def parse_args() -> argparse.Namespace:
 
     extract = subparsers.add_parser("extract", help="Extract plain text and PDF block maps.")
     extract.add_argument("--new-pdf", required=True)
-    extract.add_argument("--old-docx", required=True)
+    extract.add_argument("--old-source")
+    extract.add_argument("--old-docx")
     extract.add_argument("--output-dir", required=True)
 
     render = subparsers.add_parser("render", help="Render annotated PDF and report outputs.")
     render.add_argument("--new-pdf", required=True)
-    render.add_argument("--old-docx", required=True)
+    render.add_argument("--old-source")
+    render.add_argument("--old-docx")
     render.add_argument("--manifest-json", required=True)
     render.add_argument("--report-md", required=True)
     render.add_argument("--output-dir", required=True)
@@ -82,7 +84,7 @@ def write_text(path: Path, text: str) -> None:
 
 
 def read_text(path: Path) -> str:
-    return path.read_text(encoding="utf-8")
+    return path.read_text(encoding="utf-8-sig")
 
 
 def normalize_whitespace(text: str) -> str:
@@ -116,6 +118,25 @@ def read_docx_text(docx_path: Path) -> str:
     return "\n".join(parts).strip()
 
 
+def resolve_old_source(args: argparse.Namespace) -> Path:
+    chosen = getattr(args, "old_source", None) or getattr(args, "old_docx", None)
+    if not chosen:
+        raise ValueError("Provide --old-source <path> or legacy --old-docx <path>.")
+    return Path(chosen)
+
+
+def read_source_text(source_path: Path) -> str:
+    suffix = source_path.suffix.lower()
+    if suffix == ".docx":
+        return read_docx_text(source_path)
+    if suffix == ".pdf":
+        pdf_text, _ = extract_pdf_blocks(source_path)
+        return pdf_text
+    if suffix in {".txt", ".md"}:
+        return read_text(source_path)
+    raise ValueError(f"Unsupported old source type: {source_path.suffix}. Expected .docx, .pdf, .txt, or .md")
+
+
 def extract_pdf_blocks(pdf_path: Path) -> tuple[str, list[dict]]:
     pdf = fitz.open(str(pdf_path))
     full_text_pages: list[str] = []
@@ -146,25 +167,25 @@ def extract_pdf_blocks(pdf_path: Path) -> tuple[str, list[dict]]:
 
 def command_extract(args: argparse.Namespace) -> int:
     new_pdf = Path(args.new_pdf)
-    old_docx = Path(args.old_docx)
+    old_source = resolve_old_source(args)
     output_dir = Path(args.output_dir)
     ensure_dir(output_dir)
 
     pdf_text, pdf_blocks = extract_pdf_blocks(new_pdf)
-    docx_text = read_docx_text(old_docx)
+    old_source_text = read_source_text(old_source)
 
     write_text(output_dir / "new_pdf_full_text.txt", pdf_text)
-    write_text(output_dir / "old_docx_full_text.txt", docx_text)
+    write_text(output_dir / "old_source_full_text.txt", old_source_text)
     write_text(output_dir / "new_pdf_blocks.json", json.dumps(pdf_blocks, ensure_ascii=False, indent=2))
     write_text(
         output_dir / "source_files.json",
         json.dumps(
             {
                 "new_pdf": str(new_pdf),
-                "old_docx": str(old_docx),
+                "old_source": str(old_source),
                 "generated_files": [
                     "new_pdf_full_text.txt",
-                    "old_docx_full_text.txt",
+                    "old_source_full_text.txt",
                     "new_pdf_blocks.json",
                 ],
             },
@@ -432,7 +453,7 @@ def markdown_to_docx(md_path: Path, docx_path: Path) -> None:
 
 def command_render(args: argparse.Namespace) -> int:
     new_pdf = Path(args.new_pdf)
-    old_docx = Path(args.old_docx)
+    old_source = resolve_old_source(args)
     manifest_path = Path(args.manifest_json)
     report_md = Path(args.report_md)
     output_dir = Path(args.output_dir)
@@ -526,7 +547,7 @@ def command_render(args: argparse.Namespace) -> int:
     write_text(normalized_manifest_out, json.dumps(manifest_out, ensure_ascii=False, indent=2))
     write_text(
         source_info_out,
-        json.dumps({"new_pdf": str(new_pdf), "old_docx": str(old_docx)}, ensure_ascii=False, indent=2),
+        json.dumps({"new_pdf": str(new_pdf), "old_source": str(old_source)}, ensure_ascii=False, indent=2),
     )
 
     print(f"Wrote annotated PDF: {annotated_pdf}")

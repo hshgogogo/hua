@@ -15,12 +15,16 @@ New-Item -ItemType Directory -Force .\work | Out-Null
 New-Item -ItemType Directory -Force .\output | Out-Null
 ```
 
-## 3. Extract the source text and PDF block map
+## 3. Export the revised draft to PDF if needed
+
+If AI has just edited a DOCX, Markdown, or text draft, first obtain a revised PDF. This skill annotates the revised PDF, not the editable source.
+
+## 4. Extract the source text and PDF block map
 
 ```powershell
 python .\scripts\build_outline_diff_outputs.py extract `
   --new-pdf "E:\path\new-outline.pdf" `
-  --old-docx "E:\path\old-outline.docx" `
+  --old-source "E:\path\old-outline.docx" `
   --output-dir ".\work"
 ```
 
@@ -28,9 +32,11 @@ This creates:
 
 - `.\work\new_pdf_full_text.txt`
 - `.\work\new_pdf_blocks.json`
-- `.\work\old_docx_full_text.txt`
+- `.\work\old_source_full_text.txt`
 
-## 4. Compare the two versions
+The old baseline can be `.docx`, `.pdf`, `.txt`, or `.md`.
+
+## 5. Compare the two versions
 
 Read the extracted files and manually create:
 
@@ -39,18 +45,29 @@ Read the extracted files and manually create:
 
 Manifest format: [manifest-schema.md](manifest-schema.md)
 
-## 5. Render the deliverables
+## 6. Render the deliverables
 
 ```powershell
 python .\scripts\build_outline_diff_outputs.py render `
   --new-pdf "E:\path\new-outline.pdf" `
-  --old-docx "E:\path\old-outline.docx" `
+  --old-source "E:\path\old-outline.docx" `
   --manifest-json ".\work\annotation_manifest.json" `
   --report-md ".\work\compare_report.md" `
   --output-dir ".\output"
 ```
 
-## 6. Verify the PDF
+## 7. Auto-follow hook after AI edits
+
+If the agent itself has just revised an outline, script, treatment, beat sheet, season map, or character bio:
+
+- do not wait for a second user reminder
+- obtain or export the revised PDF
+- reuse the previous version as `--old-source`
+- regenerate the annotated comparison PDF and reports
+
+If no baseline or revised PDF exists, report the blocker explicitly.
+
+## 8. Verify the PDF
 
 Open the output PDF and check:
 
